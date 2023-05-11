@@ -26,7 +26,6 @@ services:
       - ./config.json:/letsencrypt-docker-compose/config.json:ro
       - ./nginx-conf/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./nginx-conf/conf.d:/etc/nginx/conf.d:ro
-      - ./html:/var/www/html:ro
       - nginx_conf_ssl:/etc/nginx/ssl
       - letsencrypt_certs:/etc/letsencrypt
       - certbot_acme_challenge:/var/www/certbot
@@ -77,12 +76,6 @@ services:
     depends_on:
       certbot:
         condition: service_healthy
-    restart: unless-stopped
-
-  # Replace with your backend image or remove
-  example-backend:
-    build: ./examples/nodejs-backend
-    image: evgeniy-khyst/expressjs-helloworld
     restart: unless-stopped
 
 volumes:
