@@ -82,8 +82,8 @@ services:
 
 networks:
   default:
-    external:
-      name: stage
+    name: stage
+    external: true
 
 volumes:
   nginx_conf_ssl:
